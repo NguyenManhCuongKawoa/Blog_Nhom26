@@ -17,7 +17,7 @@
         <div th:text="'Created: ' + ${#dates.format(post.createDate, 'dd-MMM-yyyy')} + ' by '">Created by</div>
         <div><a th:text="${post.user.username}" th:href="@{'/blog/' + ${post.user.username}}">User</a></div>
         <h3 th:text="${post.body}">Body</h3>
-
+		<img th:src="${post.imageUrl}" />
         <!--Only show these buttons if the user is the owner of post-->
         <div sec:authorize="isAuthenticated()" th:if="${username}">
             <div class="row">

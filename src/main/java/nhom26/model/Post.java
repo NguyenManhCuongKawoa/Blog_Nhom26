@@ -6,6 +6,8 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 import java.util.Collection;
 import java.util.Date;
 
@@ -38,6 +40,10 @@ public class Post {
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     private Collection<Comment> comments;
+    
+    @Column(name="image_url")
+    @Pattern(regexp = "\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", message = "You need to write the correct url!!")
+    private String imageUrl;
 
     public Long getId() {
         return id;
@@ -86,4 +92,14 @@ public class Post {
     public void setComments(Collection<Comment> comments) {
         this.comments = comments;
     }
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+    
+    
 }
