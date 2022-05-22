@@ -15,7 +15,7 @@ public class Role {
     @Column(name = "role", unique = true)
     private String role;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "roles")
+    @ManyToMany(cascade = CascadeType.MERGE , mappedBy = "roles")
     private Collection<User> users;
 
     public Long getId() {

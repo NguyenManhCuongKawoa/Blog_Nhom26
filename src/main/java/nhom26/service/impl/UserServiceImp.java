@@ -1,5 +1,6 @@
 package nhom26.service.impl;
 
+import nhom26.model.Provider;
 import nhom26.model.User;
 import nhom26.repository.RoleRepository;
 import nhom26.repository.UserRepository;
@@ -42,8 +43,11 @@ public class UserServiceImp implements UserService {
         // Encode plaintext password
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setActive(1);
+        user.setProvider(Provider.LOCAL);
         // Set Role to ROLE_USER
         user.setRoles(Collections.singletonList(roleRepository.findByRole(USER_ROLE)));
         return userRepository.saveAndFlush(user);
     }
+
+	
 }

@@ -1,5 +1,11 @@
 package nhom26.config;
 
+import java.io.IOException;
+import java.util.Collection;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +16,19 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+
+//import nhom26.google.CustomOAuth2User;
+//import nhom26.google.CustomOAuth2UserService;
+import nhom26.service.UserGoogleService;
 
 
 @Configuration
@@ -35,6 +51,11 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
 
+//    @Autowired
+//    private CustomOAuth2UserService oauthUserService;
+    
+    @Autowired 
+    private UserGoogleService userGoogleService;
 
     /**
      * HTTPSecurity configurer
@@ -49,14 +70,70 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/home", "/registration", "/error", "/blog/**", "/post/**").permitAll()
+                .antMatchers("/home", "/registration", "/error", "/blog/**", "/post/**", "/login", "/oauth/**").permitAll()
                 .antMatchers("/newPost/**", "/commentPost/**", "/createComment/**").hasAnyRole("USER")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/home")
-                .permitAll()
+                .formLogin().loginPage("/login").defaultSuccessUrl("/home").permitAll()
+                .and().oauth2Login()
+                	.loginPage("/login")
+                .successHandler(new AuthenticationSuccessHandler() {
+                		 
+                        @Override
+                        public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+                                Authentication authentication) throws IOException, ServletException {
+                            
+                            DefaultOidcUser oauthUser = (DefaultOidcUser) authentication.getPrincipal();
+                            String email = oauthUser.getAttribute("email");
+                            String name = oauthUser.getAttribute("name");
+                            userGoogleService.processOAuthPostLogin(email, name);
+                            
+                            Authentication auth = new Authentication() {
+								
+								@Override
+								public String getName() {
+									return email;
+								}
+								
+								@Override
+								public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
+									
+								}
+								
+								@Override
+								public boolean isAuthenticated() {
+									return true;
+								}
+								
+								@Override
+								public Object getPrincipal() {
+									return authentication.getPrincipal();
+								}
+								
+								@Override
+								public Object getDetails() {
+									return null;
+								}
+								
+								@Override
+								public Object getCredentials() {
+									return authentication.getCredentials();
+								}
+								
+								@Override
+								public Collection<? extends GrantedAuthority> getAuthorities() {
+									// TODO Auto-generated method stub
+									return authentication.getAuthorities();
+								}
+							};
+                            
+                            
+                            
+                            SecurityContextHolder.getContext().setAuthentication(auth);
+                 
+                            response.sendRedirect("/home");
+                        }
+                })
                 .and()
                 .logout()
                 .permitAll().and().requestCache().disable();
