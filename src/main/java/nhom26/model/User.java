@@ -23,9 +23,9 @@ public class User {
     @NotEmpty(message = "*Please provide an email")
     private String email;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password", nullable = true)
     @Length(min = 5, message = "*Your password must have at least 5 characters")
-    @NotEmpty(message = "*Please provide your password")
+//    @NotEmpty(message = "*Please provide your password")
     @JsonIgnore
     private String password;
 
@@ -34,23 +34,26 @@ public class User {
     @NotEmpty(message = "*Please provide your name")
     private String username;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     @NotEmpty(message = "*Please provide your name")
     private String name;
 
-    @Column(name = "last_name")
-    @NotEmpty(message = "*Please provide your last name")
+    @Column(name = "last_name", nullable = true)
+//    @NotEmpty(message = "*Please provide your last name")
     private String lastName;
 
     @Column(name = "active", nullable = false)
     private int active;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE )
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
     @OneToMany(mappedBy = "user")
     private Collection<Post> posts;
+    
+    @Enumerated(EnumType.STRING)
+    private Provider provider;
 
     public Long getId() {
         return id;
@@ -123,4 +126,14 @@ public class User {
     public void setPosts(Collection<Post> posts) {
         this.posts = posts;
     }
+
+	public Provider getProvider() {
+		return provider;
+	}
+
+	public void setProvider(Provider provider) {
+		this.provider = provider;
+	}
+    
+    
 }
