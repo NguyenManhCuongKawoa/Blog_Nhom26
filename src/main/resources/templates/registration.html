@@ -4,7 +4,7 @@
     <!--<title>Spring Boot Thymeleaf + Spring Security</title>-->
 
     <div th:replace="/fragments/header :: header-css"/>
-
+	<link rel="stylesheet" type="text/css" th:href="@{/css/form.css}">
 </head>
 <body>
 
@@ -12,63 +12,67 @@
 
 <div class="container">
 
-    <!--Show this info message only if registered successfully-->
-    <div class="alert alert-info" th:if="${successMessage}" th:utext="${successMessage}"></div>
+    <!--Show this info message only if registered successfully
+    <div class="alert alert-info" th:if="${successMessage}" th:utext="${successMessage}"></div>-->
 
-    <div class="row" style="margin-top:20px">
-        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-            <form autocomplete="off" action="#" th:action="@{/registration}"
-                  th:object="${user}" method="post" role="form">
+    <div class="form">
+        <form autocomplete="off" action="#" th:action="@{/registration}"
+              th:object="${user}" method="post" role="form">
+            <h1><b>Registration</b></h1>
+            
+            <div class="alert alert-info" th:if="${successMessage}" th:utext="${successMessage}"></div>
 
-                <div class="form-group">
-                    <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
-                           class="alert alert-danger"></label>
-                    <input type="text" th:field="*{name}" placeholder="Name"
-                           class="form-control input-lg"/>
-                </div>
+			<div class="input-fields">
+				<div class="field">
+	                <input th:attr="class=${#fields.hasErrors('name') ? 'error' : ''}"
+	                	type="text" th:field="*{name}" placeholder="Name"
+	                />
+	                <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+	                       class="alert error-msg"></label>
+	            </div>
+	
+	            <div class="field">
+	                <input th:attr="class=${#fields.hasErrors('lastName') ? 'error' : ''}"
+	                	type="text" th:field="*{lastName}" placeholder="Last Name"
+	                />
+	                <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+	                       class="alert error-msg"></label>
+	            </div>
+	
+	            <div class="field">
+	                <input th:attr="class=${#fields.hasErrors('email') ? 'error' : ''}" 
+	                	type="text" th:field="*{email}" placeholder="Email"
+	                />
+	                <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+	                   	   class="alert error-msg"></label>
+	            </div>
+	
+	            <div class="field">
+	                <input th:attr="class=${#fields.hasErrors('password') ? 'error' : ''}"
+	                	type="password" th:field="*{password}" placeholder="Password"
+	                />
+	                <label th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+	                       class="alert error-msg"></label>
+	            </div>
+	
+	            <div class="field">
+	                <input th:attr="class=${#fields.hasErrors('username') ? 'error' : ''}"
+	                	type="text" th:field="*{username}" placeholder="Username"
+	                />
+	                <label th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+	                       class="alert error-msg"></label>
+	            </div>
+			</div>
+            
+            <div class="buttons">
+                <input class="button" type="submit" value="Submit"/>
+            </div>
 
-                <div class="form-group">
-                    <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
-                           class="alert alert-danger"></label>
-                    <input type="text" th:field="*{lastName}" placeholder="Last Name"
-                           class="form-control input-lg"/>
-                </div>
-
-                <div class="form-group">
-                    <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
-                           class="alert alert-danger"></label>
-                    <input type="text" th:field="*{email}" placeholder="Email"
-                           class="form-control input-lg"/>
-                </div>
-
-                <div class="form-group">
-                    <label th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
-                           class="alert alert-danger"></label>
-                    <input type="password" th:field="*{password}" placeholder="Password"
-                           class="form-control input-lg"/>
-                </div>
-
-                <div class="form-group">
-                    <label th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
-                           class="alert alert-danger"></label>
-                    <input type="text" th:field="*{username}" placeholder="Username"
-                           class="form-control input-lg"/>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-3" style="float: none; margin: 0 auto;">
-                        <input type="submit" class="btn btn-primary btn-block" value="Submit"/>
-                    </div>
-                </div>
-
-            </form>
-        </div>
+        </form>
     </div>
-
 </div>
-<!-- /.container -->
 
-<div th:replace="/fragments/footer :: footer"/>
+<!-- /.container -->
 
 </body>
 </html>
