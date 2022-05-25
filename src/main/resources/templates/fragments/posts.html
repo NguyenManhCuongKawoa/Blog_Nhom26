@@ -1,23 +1,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" th:href="@{/css/main.css}"
+              href="../../css/main.css"/>
 </head>
 <body>
 <div th:fragment="posts">
-
-    <div class="starter-template panel" th:each="post : ${pager.posts}">
-        <div class="panel-heading">
-            <h1><a th:text="${post.title}" th:href="@{'/post/' + ${post.id}}">Title</a></h1>
-            <div th:text="'Created: ' + ${#dates.format(post.createDate, 'dd-MMM-yyyy')} + ' by '">
-                Created by
-            </div>
-            <div><a th:text="${post.user.username}" th:href="@{'/blog/' + ${post.user.username}}">User</a>
-            </div>
-        </div>
-        <h3 class="panel-body" th:text="${post.body}">Body</h3>
-        <img th:src="${post.imageUrl}" />
-        <br></br>
-    </div>
-
+  <div th:each="post : ${pager.posts}" style = "margin-top: 40px;">  
+      <div class ="row">
+          <div class = "col-md-6">    
+              <a th:href = "@{'/post/' + ${post.id}} ">
+                  <img th:src="${post.imageUrl}" class = "img-responsive" alt = "Hinh anh blog" width = "550" height = "350">
+              </a>
+          </div>
+          <div class = "col-md-6">
+             <div class = "panel panel-default">
+              <div class = "panel-heading" style = "display: flex;">
+                <div th:text="'Created in : ' + ${#dates.format(post.createDate, 'dd-MMM-yyyy')} + ' by:'">Created by
+                 </div>&nbsp;
+                 <div><a th:text="${post.user.username}" th:href="@{'/blog/' + ${post.user.username}}">User</a>
+                 </div>
+              </div>
+              <div class = "panel-body" style = "padding: 0px;">
+                <h1><a th:text="${post.title}" th:href="@{'/post/' + ${post.id}}">Title</a></h1>
+                <p th:text = "${post.body.length() > 255 ? post.body.substring(0,255) : post.body}"></p>
+              </div>
+             </div>
+             <div>
+                  <a class = "btn btn-primary" th:href = "@{'/post/' + ${post.id}}">Read More
+                  </a>
+             </div>
+          </div>
+     </div>
+  </div>
 </div>
+<br><br>
 </body>
 </html>
