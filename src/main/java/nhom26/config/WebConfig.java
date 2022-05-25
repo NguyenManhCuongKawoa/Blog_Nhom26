@@ -70,7 +70,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
                 .authorizeRequests()
-		.antMatchers("/css/**", "/js/**").permitAll()
+                .antMatchers("/css/**", "/js/**").permitAll()
                 .antMatchers("/home", "/registration", "/error", "/blog/**", "/post/**", "/login", "/oauth/**").permitAll()
                 .antMatchers("/newPost/**", "/commentPost/**", "/createComment/**").hasAnyRole("USER")
                 .antMatchers("/admin").hasAnyRole("ADMIN")
