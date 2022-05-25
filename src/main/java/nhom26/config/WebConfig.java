@@ -72,6 +72,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/home", "/registration", "/error", "/blog/**", "/post/**", "/login", "/oauth/**").permitAll()
                 .antMatchers("/newPost/**", "/commentPost/**", "/createComment/**").hasAnyRole("USER")
+                .antMatchers("/admin").hasAnyRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/home").permitAll()
@@ -157,7 +158,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 
         // In memory authentication
         auth.inMemoryAuthentication()
-                .withUser(adminUsername).password(adminPassword).roles("ADMIN");
+                .withUser(adminUsername).password(passwordEncoder().encode(adminPassword)).roles("ADMIN");
     }
     
     @Bean
