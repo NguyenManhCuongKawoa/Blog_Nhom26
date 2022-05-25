@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <div th:replace="/fragments/header :: header-css"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"
+              href="../../css/main.css"/>
+</head>
+<body>
+
+<div th:replace="/fragments/header :: header"/>
+<div class = "container">
+  <div id="viewport">
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <header>
+        <a href="#">Admin Menu</a>
+      </header>
+      <ul class="nav">
+        <li>
+          <a href="#">
+            <i class="zmdi zmdi-view-dashboard"><span class="glyphicon glyphicon-user"></span></i> User
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="zmdi zmdi-link"><span class="glyphicon glyphicon-envelope"></span></i> Post
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- Content -->
+    <div id="content">
+      <div class="container-fluid">
+        <div class="panel panel-default">
+					<div class="panel-heading" style="background-color: #263238; color:white;padding-bottom: 5px;">
+						<h3 style="margin-top: 0px; text-align: center;">List Post</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table table-bordered" style="font-size: 10px;">
+							<thead style="text-align: center">
+								<tr>
+									<th>Image</th>
+									<th>Title</th>
+									<th>Create date</th>
+									<th>Accept</th>
+									<th>Delete Post</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><img class="img-responsive" src="https://keo8386.net/wp-content/uploads/2021/02/Hinh-anh-Chelsea-ve-bieu-tuong-CLB.jpg" width="100px"></td>
+									<td>aaa</td>
+									<td>aaa</td>
+									<td><a href="#">Accept</a></td>
+									<td><a href="#">Delete</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+      </div>
+    </div>
+  </div>
+</div>
+	
+	</div>
+</body>
+</html>
