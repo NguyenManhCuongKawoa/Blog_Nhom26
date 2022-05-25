@@ -4,6 +4,7 @@ import nhom26.model.Comment;
 import nhom26.model.Post;
 import nhom26.model.User;
 import nhom26.service.CommentService;
+import nhom26.service.NotifyService;
 import nhom26.service.PostService;
 import nhom26.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,14 @@ public class CommentController {
     private final PostService postService;
     private final UserService userService;
     private final CommentService commentService;
+    private final NotifyService notifyService;
 
     @Autowired
-    public CommentController(PostService postService, UserService userService, CommentService commentService) {
+    public CommentController(PostService postService, UserService userService, CommentService commentService, NotifyService notifyService) {
         this.postService = postService;
         this.userService = userService;
         this.commentService = commentService;
+        this.notifyService = notifyService;
     }
 
     @PostMapping("/createComment")
@@ -40,7 +43,8 @@ public class CommentController {
             return "/commentForm";
 
         } else {
-            commentService.save(comment);
+        	comment = commentService.save(comment);
+            notifyService.sendNotify(comment);
             return "redirect:/post/" + comment.getPost().getId();
         }
     }
