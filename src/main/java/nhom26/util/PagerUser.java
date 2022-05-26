@@ -1,42 +1,43 @@
 package nhom26.util;
 
-import nhom26.model.Post;
+import nhom26.model.User;
+
 import org.springframework.data.domain.Page;
 
-public class Pager {
+public class PagerUser {
 
-    private final Page<Post> posts;
+    private final Page<User> users;
 
-    public Pager(Page<Post> posts) {
-        this.posts = posts;
+    public PagerUser(Page<User> users) {
+        this.users = users;
     }
 
     public int getPageIndex() {
-        return posts.getNumber() + 1;
+        return users.getNumber() + 1;
     }
 
     public int getPageSize() {
-        return posts.getSize();
+        return users.getSize();
     }
 
     public boolean hasNext() {
-        return posts.hasNext();
+        return users.hasNext();
     }
 
     public boolean hasPrevious() {
-        return posts.hasPrevious();
+        return users.hasPrevious();
     }
 
     public int getTotalPages() {
-        return posts.getTotalPages();
+        return users.getTotalPages();
     }
 
     public long getTotalElements() {
-        return posts.getTotalElements();
+        return users.getTotalElements();
     }
 
-    public Page<Post> getPosts() {
-        return posts;
+    public Page<User> getUsers() {
+        return users;
     }
 
     public boolean indexOutOfBounds() {

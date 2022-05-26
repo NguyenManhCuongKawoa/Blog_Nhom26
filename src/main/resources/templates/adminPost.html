@@ -18,12 +18,12 @@
       </header>
       <ul class="nav">
         <li>
-          <a href="#">
+          <a th:href="@{/admin/user}">
             <i class="zmdi zmdi-view-dashboard"><span class="glyphicon glyphicon-user"></span></i> User
           </a>
         </li>
         <li>
-          <a href="#">
+          <a th:href="@{/admin/post}">
             <i class="zmdi zmdi-link"><span class="glyphicon glyphicon-envelope"></span></i> Post
           </a>
         </li>
@@ -42,19 +42,21 @@
 								<tr>
 									<th>Image</th>
 									<th>Title</th>
+									<th>Content</th>
 									<th>Create date</th>
 									<th>Accept</th>
 									<th>Delete Post</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td><img class="img-responsive" src="https://keo8386.net/wp-content/uploads/2021/02/Hinh-anh-Chelsea-ve-bieu-tuong-CLB.jpg" width="100px"></td>
-									<td>aaa</td>
-									<td>aaa</td>
-									<td><a href="#">Accept</a></td>
-									<td><a href="#">Delete</a></td>
-								</tr>
+								<tr th:each="post : ${pager.getPosts()}">
+									<td><img class="img-responsive" th:src="${post.imageUrl}" width="100px"></td>
+									<td th:text="${post.title}"></td >
+									<td th:text="${post.body.length() > 255 ? post.body.substring(0,255) : post.body}"></td >
+									<td th:text="${post.createDate}"></td >
+									<td><a th:href="@{'/admin/post/accept/' + ${post.id}}" th:if="${post.accepted == 0}">Accept</a></td>
+									<td><a th:href="@{'/admin/post/delete/' + ${post.id}}">Delete</a></td>
+								</tr >
 							</tbody>
 						</table>
 					</div>
@@ -63,7 +65,8 @@
     </div>
   </div>
 </div>
-	
+	<div th:replace="/fragments/pagination :: pagination(URLparameter='/admin/post')"/>
 	</div>
+	
 </body>
 </html>

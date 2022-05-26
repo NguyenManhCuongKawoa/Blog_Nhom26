@@ -2,7 +2,8 @@ package nhom26.controller;
 
 import nhom26.model.Post;
 import nhom26.service.PostService;
-import nhom26.util.Pager;
+import nhom26.util.PagerPost;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -25,7 +26,7 @@ public class HomeController {
                        Model model) {
 
         Page<Post> posts = postService.findAllOrderedByDatePageable(page);
-        Pager pager = new Pager(posts);
+        PagerPost pager = new PagerPost(posts);
 
         model.addAttribute("pager", pager);
 

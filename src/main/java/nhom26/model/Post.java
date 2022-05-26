@@ -44,6 +44,8 @@ public class Post {
     @Column(name="image_url")
     @Pattern(regexp = "\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", message = "You need to write the correct url!!")
     private String imageUrl;
+    
+    private Integer accepted;
 
     public Long getId() {
         return id;
@@ -100,6 +102,17 @@ public class Post {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
+
+	public Integer getAccepted() {
+		return accepted;
+	}
+
+	public void setAccepted(Integer accepted) {
+		this.accepted = accepted;
+	}
+
+	
     
+	
     
 }

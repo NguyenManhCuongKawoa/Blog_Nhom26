@@ -4,7 +4,7 @@ import nhom26.model.Post;
 import nhom26.model.User;
 import nhom26.service.PostService;
 import nhom26.service.UserService;
-import nhom26.util.Pager;
+import nhom26.util.PagerPost;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -38,7 +38,7 @@ public class BlogController {
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
             Page<Post> posts = postService.findByUserOrderedByDatePageable(user, page);
-            Pager pager = new Pager(posts);
+            PagerPost pager = new PagerPost(posts);
 
             model.addAttribute("pager", pager);
             model.addAttribute("user", user);

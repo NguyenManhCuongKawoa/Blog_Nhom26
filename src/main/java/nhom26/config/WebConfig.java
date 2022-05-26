@@ -51,8 +51,6 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
 
-//    @Autowired
-//    private CustomOAuth2UserService oauthUserService;
     
     @Autowired 
     private UserGoogleService userGoogleService;
