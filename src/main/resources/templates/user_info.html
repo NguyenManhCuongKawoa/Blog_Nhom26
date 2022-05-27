@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	<head>
 	  	<div th:replace="/fragments/header :: header-css"/>
 	    
@@ -54,10 +54,9 @@
 	         			                                                                                 
 	         			<div class="profile-usermenu">                    
 	          				<ul class="nav">                      
-	           					<li class="active">
-	             					<a href="https://hocwebgiare.com/">
-	               						<i class="glyphicon glyphicon-info-sign">
-	               						</i>Change user info
+	           					<li class="active" sec:authorize="isAuthenticated()" th:if="${current_user}">
+	             					<a th:href="@{'/change_info/{name}'(name=${user.username})}">
+	               						<i class="glyphicon glyphicon-info-sign"></i>Change user info
 	             					</a>                                  
 	          				</ul>                
 	         			</div>                            

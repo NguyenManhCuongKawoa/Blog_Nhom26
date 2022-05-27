@@ -49,5 +49,8 @@ public class UserServiceImp implements UserService {
         return userRepository.saveAndFlush(user);
     }
 
-	
+	@Override 
+	public User update(User user) {
+		return userRepository.saveAndFlush(user);
+	}
 }
