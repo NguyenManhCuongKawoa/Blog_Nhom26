@@ -15,6 +15,7 @@ Bài tập lớn nhóm 26
      Note: Các trang để được phân trang
 # Phân công
     + Tìm hiểu và tạo cơ sử dữ liệu (Cả nhóm)
+    + Config trang web: (Nguyễn Mạnh Cường - B19DCCN083)
     + Đăng nhập đăng ký (Tạ Phương Duy - B19DCCN143)
     + Đăng nhập bằng tài khoản Google (Nguyễn Mạnh Cường - B19DCCN083)
     + Đăng blog, Xem blog, Sửa Blog, Xóa blog (Nguyễn Mạnh Cường - B19DCCN083)
@@ -48,6 +49,12 @@ Bài tập lớn nhóm 26
  - Trang admin
 ![image](https://user-images.githubusercontent.com/76891720/170733211-64bb9856-dc5d-4a55-9f4f-8cb2ab86e0ac.png)
 ![image](https://user-images.githubusercontent.com/76891720/170733311-efa61a96-1b4e-44ef-b356-81c94b6cd126.png)
+
+  - Trang error
+ ![image](https://user-images.githubusercontent.com/76891720/170737920-3e494599-0148-40c2-94b8-3962da3b2c0d.png)
+![image](https://user-images.githubusercontent.com/76891720/170739827-7eeaed41-ff53-49e9-90d4-8be70112578b.png)
+![image](https://user-images.githubusercontent.com/76891720/170740195-73364c1a-d8ec-480a-8e25-b66a10a0476f.png)
+
 
 
 
