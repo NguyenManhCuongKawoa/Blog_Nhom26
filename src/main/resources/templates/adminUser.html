@@ -40,18 +40,23 @@
 						<table class="table table-bordered" style="font-size: 10px;">
 							<thead style="text-align: center">
 								<tr>
+								
+									<th>Username</th>
 									<th>Name</th>
 									<th>Email</th>
-									<th>Username</th>
+									<th>Active</th>
+									<th>Change Active</th>
 									<th>Delete User</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr th:each="user : ${pager.getUsers()}">
 			
+									<td th:text="${user.username}"></td >
 									<td th:text="${user.name}"></td >
 									<td th:text="${user.email}"></td >
-									<td th:text="${user.name}"></td >
+									<td th:text="${user.active == 1 ? 'ACTIVE' : 'BLOCK'}"></td >
+									<td><a th:href="@{'/admin/user/toggle/active/' + ${user.id}}" th:text="${user.active == 1 ? 'Disable user' : 'Active user'}">Disable</a></td>
 									<td><a th:href="@{'/admin/user/delete/' + ${user.id}}">Delete</a></td>
 								</tr >
 							</tbody>

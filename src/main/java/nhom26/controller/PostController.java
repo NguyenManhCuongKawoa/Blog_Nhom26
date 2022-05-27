@@ -104,7 +104,7 @@ public class PostController {
         }
     }
 
-    @DeleteMapping("/post/{id}")
+    @GetMapping("/post/delete/{id}")
     public String deletePostWithId(@PathVariable Long id,
                                    Principal principal) {
 
@@ -115,7 +115,7 @@ public class PostController {
 
             if (isPrincipalOwnerOfPost(principal, post)) {
                 postService.delete(post);
-                return "redirect:/home";
+                return "redirect:/blog/" + post.getUser().getUsername();
             } else {
                 return "/403";
             }

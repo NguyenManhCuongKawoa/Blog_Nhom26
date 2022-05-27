@@ -156,8 +156,8 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(passwordEncoder());
 
         // In memory authentication
-        auth.inMemoryAuthentication()
-                .withUser(adminUsername).password(passwordEncoder().encode(adminPassword)).roles("ADMIN");
+//        auth.inMemoryAuthentication()
+//                .withUser(adminUsername).password(passwordEncoder().encode(adminPassword)).roles("ADMIN");
     }
     
     @Bean

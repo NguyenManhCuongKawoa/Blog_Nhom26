@@ -62,13 +62,9 @@
         <!--Dont show delete button if the post is brand new-->
         <div class="row" th:if="${post.id}">
             <div class="col-md-6 col-md-offset-3">
-                <form action="#" th:action="@{'/post/{id}'(id=${post.id})}" th:method="delete"
-                      class="form-horizontal">
-                    <div class="form-group">
-                        <input type="hidden" name="_method" value="delete"/>
-                        <button type="submit" class="btn btn-danger btn-block" th:text="Delete">Delete</button>
-                    </div>
-                </form>
+                <div class="form-group">
+                    <a th:href="@{'/post/delete/{id}'(id=${post.id})}" class="btn btn-danger btn-block" th:text="Delete">Delete</a>
+                </div>
             </div>
         </div>
     </div>

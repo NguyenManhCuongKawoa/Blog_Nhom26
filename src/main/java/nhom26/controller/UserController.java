@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,6 +23,7 @@ import nhom26.service.UserService;
 public class UserController {
 	
     private final UserService userService;
+    
 
     @Autowired
     public UserController(PostService postService, UserService userService) {
@@ -56,7 +58,7 @@ public class UserController {
 
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
-
+//            user.setPassword(this.passwordEncoder.)
             if (principal != null && username.equals(principal.getName())) {
                 model.addAttribute("user", user);
                 return "/user_info_form";

@@ -37,6 +37,7 @@
 	                 					<th style="text-align:center">Last Name</th>
 	                 					<th style="text-align:center">Email</th>
 	                 					<th style="text-align:center">Username</th>
+	                 					<th style="text-align:center">Active</th>
 	               					</tr>
 	             				</thead>
 	             				
@@ -46,6 +47,7 @@
 					                 	<td th:text="${user.lastName}">Last Name</td>
 					                 	<td th:text="${user.email}">Email</td>
 					                 	<td th:text="${user.username}">Username</td>
+					                 	<td th:text="${user.active == 1 ? 'ACTIVE' : 'BLOCK'}">Active</td>
 					               	</tr>
 					           	</tbody>
 	

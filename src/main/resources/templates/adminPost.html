@@ -54,7 +54,7 @@
 									<td th:text="${post.title}"></td >
 									<td th:text="${post.body.length() > 255 ? post.body.substring(0,255) : post.body}"></td >
 									<td th:text="${post.createDate}"></td >
-									<td><a th:href="@{'/admin/post/accept/' + ${post.id}}" th:if="${post.accepted == 0}">Accept</a></td>
+									<td><a th:href="@{'/admin/post/accept/' + ${post.id}}" th:if="${post.accepted == null || post.accepted == 0}">Accept</a></td>
 									<td><a th:href="@{'/admin/post/delete/' + ${post.id}}">Delete</a></td>
 								</tr >
 							</tbody>

@@ -51,6 +51,11 @@ public class UserServiceImp implements UserService {
 
 	@Override 
 	public User update(User user) {
-		return userRepository.saveAndFlush(user);
+		Optional<User> uExisted = findByUsername(user.getUsername());
+		uExisted.get().setEmail(user.getEmail());
+		uExisted.get().setName(user.getName());
+		uExisted.get().setLastName(user.getLastName());
+
+		return userRepository.saveAndFlush(uExisted.get());
 	}
 }

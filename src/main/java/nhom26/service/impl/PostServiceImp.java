@@ -33,7 +33,7 @@ public class PostServiceImp implements PostService {
 
     @Override
     public Page<Post> findByUserOrderedByDatePageable(User user, int page) {
-        return postRepository.findByUserAndAcceptedOrderByCreateDateDesc(user, 1, PageRequest.of(subtractPageByOne(page), 5));
+        return postRepository.findByUserOrderByCreateDateDesc(user, PageRequest.of(subtractPageByOne(page), 5));
     }
 
     @Override

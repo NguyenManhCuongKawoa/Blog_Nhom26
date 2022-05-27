@@ -67,6 +67,19 @@ public class AdminController {
 		return "/adminUser";
 	}
 	
+	@GetMapping("/user/toggle/active/{id}")
+	public String disableUser(@PathVariable Long id, Model model) {
+		User user = userRepository.getById(id);
+		user.setActive(user.getActive() == 1 ? 0 : 1);
+		userRepository.save(user);
+		Page<User> users = userRepository.findAllByOrderByIdDesc(PageRequest.of(subtractPageByOne(0), 5));
+		
+		PagerUser pager = new PagerUser(users);
+
+		model.addAttribute("pager", pager);
+		return "/adminUser";
+	}
+	
 	@GetMapping("post")
 	public String post(@RequestParam(defaultValue = "0") int page, Model model) {
 		Page<Post> posts = postRepository.findAllByOrderByCreateDateDesc(PageRequest.of(subtractPageByOne(page), 5));
@@ -86,6 +99,9 @@ public class AdminController {
 		model.addAttribute("pager", pager);
 		return "/adminPost";
 	}
+	
+
+	
 	
 	@GetMapping("/post/accept/{id}")
 	public String acceptPost(@PathVariable Long id, Model model) {
