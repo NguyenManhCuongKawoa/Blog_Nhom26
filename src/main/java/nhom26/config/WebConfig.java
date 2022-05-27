@@ -71,7 +71,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/css/**", "/js/**").permitAll()
                 .antMatchers("/home", "/registration", "/error", "/blog/**", "/post/**", "/login", "/oauth/**").permitAll()
                 .antMatchers("/newPost/**", "/commentPost/**", "/createComment/**").hasAnyRole("USER")
-                .antMatchers("/admin").hasAnyRole("ADMIN")
+                .antMatchers("/admin/**").hasAnyRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/home").permitAll()
