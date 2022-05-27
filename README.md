@@ -13,6 +13,10 @@ Bài tập lớn nhóm 26
       _ Quản lý blog: xem toàn blog, Chấp nhận blog có được người khác xem hay không, xóa blog
     + Đang phát triển chức năng thông báo realtime (xong backend còn ít frontend)
      Note: Các trang để được phân trang
+# Thành Viên
+  - Nguyễn Mạnh Cường - B19DCCN083 (Leader)
+  - Phạm Văn Dũng - B19DCCN131
+  - Tạ Phương Duy - B19DCCN143
 # Phân công
     + Tìm hiểu và tạo cơ sử dữ liệu (Cả nhóm)
     + Config trang web: (Nguyễn Mạnh Cường - B19DCCN083)
