@@ -23,4 +23,6 @@ public interface PostService {
     Page<Post> findAllOrderedByDatePageable(int page);
 
     void delete(Post post);
+
+	Page<Post> findAllByKeyWord(String keyword);
 }
