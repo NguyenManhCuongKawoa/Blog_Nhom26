@@ -13,8 +13,13 @@ Bài tập lớn nhóm 26
       _ Quản lý blog: xem toàn blog, Chấp nhận blog có được người khác xem hay không, xóa blog
     + Đang phát triển chức năng thông báo realtime (xong backend còn ít frontend)
      Note: Các trang để được phân trang
+# Thành Viên
+  - Nguyễn Mạnh Cường - B19DCCN083 (Leader)
+  - Phạm Văn Dũng - B19DCCN131
+  - Tạ Phương Duy - B19DCCN143
 # Phân công
     + Tìm hiểu và tạo cơ sử dữ liệu (Cả nhóm)
+    + Config trang web: (Nguyễn Mạnh Cường - B19DCCN083)
     + Đăng nhập đăng ký (Tạ Phương Duy - B19DCCN143)
     + Đăng nhập bằng tài khoản Google (Nguyễn Mạnh Cường - B19DCCN083)
     + Đăng blog, Xem blog, Sửa Blog, Xóa blog (Nguyễn Mạnh Cường - B19DCCN083)
@@ -45,9 +50,18 @@ Bài tập lớn nhóm 26
 ![image](https://user-images.githubusercontent.com/76891720/170732821-cd7208c0-03d7-46c2-b970-894e0411928d.png)
 ![image](https://user-images.githubusercontent.com/76891720/170733075-b4d62032-04f8-463d-818f-b3128fc955c5.png)
 ![image](https://user-images.githubusercontent.com/76891720/170733026-bf7653a6-6df0-4f25-98ea-30d011acaebf.png)
+  - search
+![image](https://user-images.githubusercontent.com/76891720/170740709-e469e963-d57b-464b-b239-8b28fd602d6e.png)
+
  - Trang admin
 ![image](https://user-images.githubusercontent.com/76891720/170733211-64bb9856-dc5d-4a55-9f4f-8cb2ab86e0ac.png)
 ![image](https://user-images.githubusercontent.com/76891720/170733311-efa61a96-1b4e-44ef-b356-81c94b6cd126.png)
+
+  - Trang error
+ ![image](https://user-images.githubusercontent.com/76891720/170737920-3e494599-0148-40c2-94b8-3962da3b2c0d.png)
+![image](https://user-images.githubusercontent.com/76891720/170739827-7eeaed41-ff53-49e9-90d4-8be70112578b.png)
+![image](https://user-images.githubusercontent.com/76891720/170740195-73364c1a-d8ec-480a-8e25-b66a10a0476f.png)
+
 
 
 
