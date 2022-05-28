@@ -29,7 +29,7 @@ Bài tập lớn nhóm 26
       _ Quản lý user: xem toàn user, xóa user, active hoặc disable user
       _ Quản lý blog: xem toàn blog, Chấp nhận blog có được người khác xem hay không, xóa blog
      Note: Các trang để được phân trang
-    + Đang phát triển chức năng thông báo realtime (xong backend còn ít frontend) (Nguyễn Mạnh Cường - B19DCCN083)
+    + Đang phát triển chức năng thông báo realtime  (Nguyễn Mạnh Cường - B19DCCN083)
     + Nhập dữ liệu: (Phạm Văn Dũng - B19DCCN131)
     + Các trang frontend: 
       _ blog, user, home, comment,... - (Phạm Văn Dũng - B19DCCN131)
