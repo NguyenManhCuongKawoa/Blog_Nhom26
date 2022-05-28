@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import nhom26.model.Comment;
@@ -16,8 +17,9 @@ import nhom26.repository.NotifyRepository;
 public class NotifyService {
 	
 	@Autowired private NotifyRepository notifyRepository;
+	@Autowired private SimpMessagingTemplate simpMessagingTemplate;
 	
-	@SendTo("/notify/public")
+//	@SendTo("/notify/public")
 	public Notify sendNotify(Comment comment) {
 		Post post = comment.getPost();
 		User user = comment.getUser();
@@ -34,6 +36,7 @@ public class NotifyService {
 		notify.setCreatedAt(LocalDate.now());
 		
 		notifyRepository.save(notify);
+		simpMessagingTemplate.convertAndSend("/notify/public", notify);
 		
 		return notify;
 	}

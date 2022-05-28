@@ -47,31 +47,16 @@
                 	<li class="active"><a th:href="@{'/user/' + ${#authentication.getName()}}">Profile</a></li>
                     <li class="active"><a th:href="@{'/blog/' + ${#authentication.getName()}}"><span class = "glyphicon glyphicon-user"></span> My Blog</a></li>
                     <li class="active"><a th:href="@{/newPost}"><span class = "glyphicon glyphicon-pencil"></span>New Post</a></li>
-                    <li class="dropdown">
+                    <li class="dropdown" >
                        <a class = "dropdown-toggle" data-toggle = "dropdown" href="#"><span class = "glyphicon glyphicon-bell"></span>Notification</a>
-                       <ul class="dropdown-menu">
+                       <ul class="dropdown-menu" style="width: 500px;">
 							<li class="dropdown-header" style="border-bottom: 1px solid #000;">
 								<p style="font-size: 20px;">Notification <span class="glyphicon glyphicon-cog" style="float:right"></span></p>
 							</li>
-							<li>
-								<a style="padding: 3px 20px">
-									<div class="row" style="display:flex; width: 500px;">
-										<div class="col-lg-2" style="display: flex; justify-content: center; align-items: center;">
-											<p><span style="    font-size: 26px;
-												    padding: 8px;
-												    border-radius: 50%; color: #807f7f;
-												    background: #ccc;" class="glyphicon glyphicon-bell"></span ></p>
-										</div>
-										<div class="col-lg-10" style="padding-left: 0px; padding-right: 10px; width: 100%;">
-											<div style="word-wrap: break-word; white-space: normal; display: flex; flex-direction: column; justify-content: center; ">
-												<p style="margin: 0px; font-size:20px; font-weight: 600;   color: #737373;">Có người comment bài viết của bạn </p>
-												<p style="margin: 0px; font-size: 16px;">Bài viết của bạn khá bổ ích </p>
-												<p style="margin: 0px;text-align: right;">1 phút trước</p >
-											</div>
-										</div>
-									</div>
-								</a>
-							</li>
+							<div id="notify-area">
+								
+							</div >
+							
 						</ul>
                     </li>
                     <li class="active"><a th:href="@{/logout}"><span class = "glyphicon glyphicon-log-out"></span> Sign Out</a></li>

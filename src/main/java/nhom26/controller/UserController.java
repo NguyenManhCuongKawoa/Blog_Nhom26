@@ -40,8 +40,10 @@ public class UserController {
             model.addAttribute("user", user);
             if (principal != null && username.equals(principal.getName())) {
                 model.addAttribute("current_user", principal.getName());
+                return "/user_info";
+            } else {
+            	return "/403";
             }
-            return "/user_info";
         }
         
         return "/error";
